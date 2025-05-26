@@ -1,0 +1,6 @@
+/* Estilos generales */ 
+ body { font-size: 16px; } 
+/* Estilos para pantallas pequeñas (menos de 600px) */
+ @media only screen and (max-width: 600px) { body { font-size: 14px; } } 
+/* Estilos para pantallas medianas (más de 768px) */ 
+ @media only screen and (min-width: 768px) { body { font-size: 18px; } }
