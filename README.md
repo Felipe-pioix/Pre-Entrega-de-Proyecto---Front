@@ -1,1 +1,1 @@
-Proyecto Pagina Web - basado en la empresa donde trabajo, ElDan Electronica.
+Proyecto de Pagina Web para ElDan Electronica.
