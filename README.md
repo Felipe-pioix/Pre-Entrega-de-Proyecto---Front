@@ -1,1 +1,1 @@
-Pagina Web de Pre-Entrega de Proyecto - Front - basado en la empresa donde trabajo, eldan Electronica.
+Proyecto de Pagina Web para ElDan Electronica.
