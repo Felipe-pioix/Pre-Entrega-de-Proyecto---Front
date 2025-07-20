@@ -1,0 +1,18 @@
+Implementación de la API - FakeStore
+
+Consta de 5 archivos: 
+
+fakestore.html
+fakestore.css
+fakestore.js
+
+compra.html
+compra.js
+
+-------------------
+
+Los 3 primeros: fakestore.html, fakestore.css y fakestore.js contienen el id dónde se mostrarán los productos en el html, el estilo que le daremos a las tarjetas en el css y la petición a la API fakestore con la captura de los eventos de cada botón "comprar" y el renderizado dinámico en el js.
+Los otros 2 archivos: compra.html y compra.js se encargan de tomar el sessionStorage almacenado del carrito generado en fakestore para mostrarlo como resumen de la compra en id="detalle" y enviarlo por Formspree.
+
+(!) En caso que no les llegue los correos desde Formspree, verifiquen en la solapa Submission -- Spam y haciendo click en el recuadro de la izquierda lo marcan como NOT SPAM
+

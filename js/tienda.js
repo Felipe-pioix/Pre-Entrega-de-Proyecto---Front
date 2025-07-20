@@ -1,3 +1,9 @@
+// carga carrito al cargar la pagina
+
+ addEventListener("load", (event) => {cargarCarrito(); })
+console.log("cargo")
+dolar()
+
 // Asigna evento clic a todos los botones con la clase "comprar" del HTML
 let botonesComprar = document.getElementsByClassName('comprar');
    for (let i = 0; i < botonesComprar.length; i++) {
@@ -69,4 +75,14 @@ function pagar() {
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('btnPagar').addEventListener('click', pagar);
 });
-
+let cartelDolar = document.getElementById("dolar");
+async function dolar(){
+await fetch('https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones') 
+ .then(response => response.json()) 
+ .then(data => { 
+     //console.log(JSON.parse(data))
+     const resultado = data.results.detalle.find(moneda => moneda.codigoMoneda === "USD");
+     cartelDolar.innerHTML="<p></p><h4>Cotizacion Dolar: $"+resultado.tipoCotizacion+"</h4><p></p>"
+     
+ }); 
+}

@@ -1,0 +1,23 @@
+Instrucciones: 
+
+Descargar y usar.
+Pero asegúrate de revisar la dirección en la que colocas el js y editarlo con la estructura de tus archivos, en caso de ser necesario.
+
+Por ejemplo: 
+En el HTML se usa esta llamada al script: 
+
+<script src="./js/ejemplo_resenia.js"></script>
+
+suponiendo que tenes una carpeta llamada js y en cuyo interior colocas todos tus archivos JavaScript. 
+
+Pero, en caso que no tengas esa carpeta o que la tengas con otro nombre, modifica esa dirección:  
+Por ejemplo: 
+
+Si no tenes carpeta JS usa esto:
+<script src="ejemplo_resenia.js"></script>
+
+Si tenes carpeta JS con otro_nombre, usá: 
+<script src="./otro_nombre/ejemplo_resenia.js"></script>
+
+
+
