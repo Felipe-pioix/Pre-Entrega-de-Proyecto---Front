@@ -256,21 +256,20 @@ button.comprar {
 
 /* Estilos para el contador del carrito */
 .contador-carrito {
-  display: none;
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #f44336;
+  position: relative;
+  top: -30px;
+  right: -40px;
+  background-color: #DA251C;
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
   align-items: center;
   justify-content: center;
 }
 
-.carrito-icono {
+.icono-carrito {
   position: relative;
 }
 
