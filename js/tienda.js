@@ -1,5 +1,4 @@
 //actualizar contador carrito al cargar la pagina
-
  addEventListener("load", (event) => {dolar(); actualizarContadorCarrito();})
 
 // Asigna evento clic a todos los botones con la clase "comprar" del HTML
@@ -31,6 +30,7 @@ function agregarProducto(event) {
     actualizarContadorCarrito();
 }
 
+// mostrar modal
 function cargarCarrito() {
     console.log("Cargar carrito");
     let listaCarrito = document.getElementById('lista-carrito');
@@ -57,7 +57,7 @@ function cargarCarrito() {
     
 }
 
-
+// actualiza el contador del carrito
 function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const contador = document.getElementById("contador-carrito");
@@ -75,48 +75,7 @@ function actualizarContadorCarrito() {
     
 }
 
-
-
-
-
-// Función para mostrar el modal del carrito
-
-/*
-function mostrarModalCarrito() {
-    const modal = document.getElementById("modal-carrito");
-    const listaCarrito = document.getElementById("lista-carrito");
-    const totalCarrito = document.getElementById("total-carrito");
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    listaCarrito.innerHTML = "";
-
-    if (carrito.length === 0) {     
-        listaCarrito.innerHTML = "<p>No hay productos en el carrito.</p>";
-        totalCarrito.textContent = "Total: $0.000";
-    } else {
-        let totalPrecio = 0;
-       
-        carrito.forEach((id) => {
-            const producto = carrito.find(p => p.id === id);
-            if (!producto) return;
-           
-            totalPrecio += producto.price;
-           
-            const item = document.createElement("div");
-            item.className = "item-carrito";
-            item.innerHTML = `
-                <span><strong>${producto.title}</strong></span>
-                <span>$${producto.price.toFixed(3)}</span>
-            `;
-            listaCarrito.appendChild(item);
-        });
-       
-        totalCarrito.textContent = `Total: $${totalPrecio.toFixed(3)}`;
-    }
-
-    modal.style.display = "block";
-}*/
-
-
+// carga la pagina de pagar con el carrito
 function pagar() {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -151,8 +110,6 @@ function manejarClicksModal(event) {
         cerrarModal();
     }
 }
-
-// Función para actualizar el contador del carrito
 
 
 // Asignar el evento al botón (cuando el DOM esté listo)

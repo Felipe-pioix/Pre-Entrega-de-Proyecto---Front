@@ -255,7 +255,7 @@ button.comprar {
 }
 
 /* Estilos para el contador del carrito */
-.contador-carrito {
+#contador-carrito {
   position: relative;
   top: -30px;
   right: -40px;
@@ -269,8 +269,8 @@ button.comprar {
   justify-content: center;
 }
 
-.icono-carrito {
-  position: relative;
+.carrito {
+  margin: 15px;
 }
 
 
