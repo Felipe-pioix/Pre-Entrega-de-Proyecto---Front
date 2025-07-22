@@ -13,6 +13,7 @@ let botonesComprar = document.getElementsByClassName('comprar');
 // Vacía carrito
 document.getElementById('vaciar-carrito').addEventListener('click', function() {
      localStorage.removeItem('carrito');
+     console.log("carrito vacio")
      cargarCarrito();
 });
 
@@ -26,17 +27,21 @@ function agregarProducto(event) {
 console.log(producto);
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito.push(producto);
+    console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
     cargarCarrito();
+    actualizarContadorCarrito();
 }
 
 function cargarCarrito() {
     let listaCarrito = document.getElementById('lista-carrito');
     let totalCarrito = document.getElementById('total-carrito');
+    const modal = document.getElementById("modal-carrito");
     listaCarrito.innerHTML = '';
     totalCarrito.textContent = '0';
 
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let contador = document.getElementById("contador-carrito");
     let total = 0;
    
     for (let i = 0; i < carrito.length; i++) {
@@ -48,6 +53,13 @@ function cargarCarrito() {
     }
     // Mostrar el total redondeado a 3 decimales
     totalCarrito.textContent = total.toFixed(3);
+    // Mostrar u ocultar según si hay productos
+        if (carrito.length > 0) {
+            contador.style.display = "flex";
+        } else {
+            contador.style.display = "none";
+        }
+    modal.style.display = "block";
 }
 
 function pagar() {
@@ -70,11 +82,94 @@ function pagar() {
     alert(`Total a pagar: $${total.toFixed(3)}`);
     window.location.href = "compra.html";
 }
+// Función para mostrar el modal del carrito
+function mostrarModalCarrito() {
+    const modal = document.getElementById("modal-carrito");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalCarrito = document.getElementById("total-carrito");
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    listaCarrito.innerHTML = "";
+
+    if (carrito.length === 0) {
+        listaCarrito.innerHTML = "<p>No hay productos en el carrito.</p>";
+        totalCarrito.textContent = "Total: $0.000";
+    } else {
+        let totalPrecio = 0;
+       
+        carrito.forEach((id) => {
+            const producto = productosDB.find(p => p.id === id);
+            if (!producto) return;
+           
+            totalPrecio += producto.price;
+           
+            const item = document.createElement("div");
+            item.className = "item-carrito";
+            item.innerHTML = `
+                <span><strong>${producto.title}</strong></span>
+                <span>$${producto.price.toFixed(3)}</span>
+            `;
+            listaCarrito.appendChild(item);
+        });
+       
+        totalCarrito.textContent = `Total: $${totalPrecio.toFixed(3)}`;
+    }
+
+    modal.style.display = "block";
+}
+
+// Función para cerrar el modal
+function cerrarModal() {
+    document.getElementById("modal-carrito").style.display = "none";
+}
+
+// Función para manejar clicks fuera del modal
+function manejarClicksModal(event) {
+    const modal = document.getElementById("modal-carrito");
+    if (event.target === modal || event.target.classList.contains("cerrar-modal")) {
+        cerrarModal();
+    }
+}
+
+// Función para actualizar el contador del carrito
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+    const contador = document.getElementById("contador-carrito");
+
+    if (contador) {
+        // Actualizar el número
+        contador.textContent = carrito.length > 9 ? "9+" : carrito.length;
+       
+        // Mostrar u ocultar según si hay productos
+        if (carrito.length > 0) {
+            contador.style.display = "flex";
+        } else {
+            contador.style.display = "none";
+        }
+    }
+}
+
 
 // Asignar el evento al botón (cuando el DOM esté listo)
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('btnPagar').addEventListener('click', pagar);
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("pagar")?.addEventListener("click", pagar);
+    window.addEventListener("click", manejarClicksModal);
+    document.getElementById("icono-carrito")?.addEventListener("click", cargarCarrito);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let cartelDolar = document.getElementById("dolar");
 async function dolar(){
 await fetch('https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones') 

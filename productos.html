@@ -27,13 +27,39 @@
 	</header>
 	<main>
 		  <h1>Tienda Online</h1>
-<div id="carrito">
-    <h2>Carrito de Compras</h2>
-    <p>Total: $<span id="total-carrito">0</span></p>
-    <ul id="lista-carrito"></ul>
-</div>
-<button id="btnPagar">Pagar</button>
-<button id="vaciar-carrito">Vaciar Carrito</button>
+
+<li>
+            <a href="#" id="icono-carrito" class="carrito-icono">
+            <img src="img/carrito.png">
+            <span id="contador-carrito" class="contador-carrito">0</span>
+            </a>
+            </li>
+
+
+
+      <div id="carrito">
+<!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>    
+  
+            <h2>Carrito de Compras</h2>
+            
+            <p>Total: $<span id="total-carrito">0</span></p>
+            <ul id="lista-carrito"></ul>
+            <div id="total-carrito">Total: $0.00</div>
+            <div class="botones-carrito">
+                <button id="vaciar-carrito">Vaciar Carrito</button>
+                <button id="pagar">Pagar</button>
+            </div>
+        </div>
+    </div>
+
+
+
+  </div>
+
+
 <div id="dolar"><p><h4>Cotizacion Dolar: cargando...</h2></p></div>
 
 		
@@ -133,11 +159,14 @@
 </div>
 
 		</main>
-	
+ 
 <footer>
 	<hr>
 	<h4>Máquinas y accesorios para la industria del plástico</h4>
 </footer>
 <script src="./js/tienda.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
 </body>
 </html>
