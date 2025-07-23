@@ -1,5 +1,5 @@
 *{
-	margin: 0;padding: 0; text-decoration: none;    font-family: 'Roboto', Open Sans, sans-serif;}
+	margin: 0;padding: 0; text-decoration: none;    font-family: 'Roboto', Open Sans, sans-serif;font-size: xx-large;}
 h1{
 	color:#666;text-align: center;}
 	h2{
@@ -7,7 +7,7 @@ h1{
 a {
 	color: white;}
 header {
-	background-color:  #666;	color:white;text-align: center;height: 9vh;min-height: 85px;margin: 5px;width:100vw; min-width: 380px;}
+	background-color:  #666;	color:white;text-align: center;height: 9vh;min-height: 100px;margin: 5px;width:100vw; min-width: 380px;}
 header img {
 		display: inline;margin: 5px;}
 nav {
@@ -237,7 +237,7 @@ button.comprar {
 }
 
 #vaciar-carrito {
-  background-color: #f44336;
+  background-color: #911811;
   color: white;
 }
 
@@ -257,7 +257,7 @@ button.comprar {
 /* Estilos para el contador del carrito */
 #contador-carrito {
   position: relative;
-  top: -30px;
+  top: -60px;
   right: -40px;
   background-color: #DA251C;
   color: white;

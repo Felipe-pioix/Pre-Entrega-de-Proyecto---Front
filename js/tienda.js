@@ -21,49 +21,121 @@ function agregarProducto(event) {
     let producto = {
         id: event.target.getAttribute('data-id'),
         nombre: event.target.getAttribute('data-nombre'),
-        precio: event.target.getAttribute('data-precio')
+        precio: event.target.getAttribute('data-precio'),
+        cantidad: 1
     };
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+    let productoExistente = carrito.find(item => item.id === producto.id);
+if (productoExistente) {
+    // Si existe, aumentar la cantidad
+    productoExistente.cantidad += producto.cantidad;
+} else {
+    // Si no existe, agregarlo al carrito
     carrito.push(producto);
-    console.log(producto)
+}console.log(producto)
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarContadorCarrito();
 }
 
 // mostrar modal
 function cargarCarrito() {
+    
     console.log("Cargar carrito");
-    let listaCarrito = document.getElementById('lista-carrito');
+    
     let totalCarrito = document.getElementById('total-carrito');
     const modal = document.getElementById("modal-carrito");
-    listaCarrito.innerHTML = '';
+    let tabla = document.getElementById('tabla-carrito');
+    let header = document.getElementById('header-tabla-carrito');
+    let cartel = document.getElementById('cartel-carritovacio');
+    tabla.innerHTML = ''; // Limpiar contenido anterior
+
     totalCarrito.textContent = '0';
 
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     let contador = document.getElementById("contador-carrito");
     let total = 0;
-   
-    for (let i = 0; i < carrito.length; i++) {
-        let producto = carrito[i];   
-        let li = document.createElement('li');
-        li.textContent = producto.nombre + ' - $' + producto.precio;
-        listaCarrito.appendChild(li);
-        total += parseFloat(producto.precio) || 0;
+
+    if (carrito.length){
+        header.style.display = "block";
+        cartel.style.display ="none"
+        carrito.forEach(producto => {
+            let fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${producto.nombre}</td>
+                <td>
+                    <button onclick="disminuirCantidad('${producto.id}')">-</button>
+                    ${producto.cantidad}
+                    <button onclick="aumentarCantidad('${producto.id}')">+</button>
+                </td>
+                <td>$${parseInt(producto.precio).toLocaleString("es-AR")}</td>
+                <td>$${parseInt((parseFloat(producto.precio) * producto.cantidad)).toLocaleString("es-AR")}</td>
+                <td>
+                
+                <button onclick="eliminarProducto('${producto.id}')">🗑️</button>
+            </td>
+            `;
+            tabla.appendChild(fila);
+            total += parseFloat(producto.precio * producto.cantidad) || 0 ;
+        
+        });
+    }else{
+header.style.display = "none";
+cartel.style.display ="Block"
     }
-    // Mostrar el total redondeado a 3 decimales
-    totalCarrito.textContent = total.toFixed(3);
+
+   
+    // Mostrar el total redondeado a 0 decimales
+    totalCarrito.textContent = 'Total: $'+ parseInt(total).toLocaleString("es-AR");
     modal.style.display = "block";
     
     
 }
 
+function aumentarCantidad(id) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let producto = carrito.find(p => p.id === id);
+    if (producto) {
+        producto.cantidad += 1;
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito();
+        actualizarContadorCarrito();
+    }
+}
+
+function disminuirCantidad(id) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let producto = carrito.find(p => p.id === id);
+    if (producto) {
+        if (producto.cantidad > 1) {
+            producto.cantidad -= 1;
+        } else {
+            // Eliminar si cantidad llega a 1 y se presiona -
+            carrito = carrito.filter(p => p.id !== id);
+        }
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito();
+        actualizarContadorCarrito();
+    }
+}
+
+function eliminarProducto(id) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito = carrito.filter(p => p.id !== id);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    cargarCarrito();
+    actualizarContadorCarrito();
+}
+
+
 // actualiza el contador del carrito
 function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const contador = document.getElementById("contador-carrito");
+    let cantidadTotal = carrito.reduce((total, producto) => total + producto.cantidad, 0);
     if (contador) {
         // Actualizar el número
-        contador.innerHTML = carrito.length > 9 ? "9+" : carrito.length;
+        contador.innerHTML = cantidadTotal > 9 ? "9+" : cantidadTotal;
         // Mostrar u ocultar según si hay productos
         if (carrito.length > 0) {
             contador.style.display = "flex";
@@ -99,7 +171,7 @@ function pagar() {
 
 
 // Función para cerrar el modal
-function cerrarModal() {
+function cerrarModal() {actualizarContadorCarrito();
     document.getElementById("modal-carrito").style.display = "none";
 }
 
@@ -141,7 +213,7 @@ await fetch('https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones')
  .then(data => { 
      //console.log(JSON.parse(data))
      const resultado = data.results.detalle.find(moneda => moneda.codigoMoneda === "USD");
-     cartelDolar.innerHTML="<p></p><h4>Cotizacion Dolar: $"+resultado.tipoCotizacion+"</h4><p></p>"
+     cartelDolar.innerHTML="<p></p><h4>Cotizacion Dolar: $"+parseFloat(resultado.tipoCotizacion).toLocaleString("es-AR")+"</h4><p></p>"
      
  }); 
 }

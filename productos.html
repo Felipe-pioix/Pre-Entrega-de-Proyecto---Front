@@ -39,8 +39,20 @@
             <span class="cerrar-modal">&times;</span>    
   
             <h2>Carrito de Compras</h2>
-            
-            <p>Total: $<span id="total-carrito">0</span></p>
+            <div id="cartel-carritovacio">carrito vacio</div>
+            <table id="header-tabla-carrito" style="text-align: center;">
+              <thead id="header-tabla-carrito">
+                  <tr>
+                      <th width="64%">Producto</th>
+                      <th width="12%">Cantidad</th>
+                      <th width="12%">$ un</th>
+                      <th width="12%">Subtotal</th>
+                  </tr>
+            </thead>
+    <tbody id="tabla-carrito">
+        <!-- Aquí se insertarán los productos dinámicamente con JavaScript -->
+    </tbody>
+</table>
             <ul id="lista-carrito"></ul>
             <div id="total-carrito">Total: $0.00</div>
             <div class="botones-carrito">
@@ -55,109 +67,101 @@
   
 
 
-<div id="dolar"><p><h4>Cotizacion Dolar: cargando...</h2></p></div>
+<div id="dolar"><p><h3>Cotizacion Dolar: cargando...</h2></p></div>
 
 		
-		<hr>
-		<h1>Productos</h1>
-			<hr>
-			<div class="productos">
-				<div class="producto">
-  <img src="img/A2DD.gif" alt="A2DD">
-  <h4 class="precio">$145323</h4>
-  <button class="comprar" data-id="1" data-nombre="A2DD" data-precio="145323">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/A3DD.png" alt="A3DD">
-  <h4 class="precio">$17265</h4>
-  <button class="comprar" data-id="2" data-nombre="A3DD" data-precio="17265">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/A4DD.png" alt="A4DD">
-  <h4 class="precio">$183455</h4>
-  <button class="comprar" data-id="3" data-nombre="A4DD" data-precio="183455">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/ASY3D.jpg" alt="ASY3D">
-  <h4 class="precio">$109973</h4>
-  <button class="comprar" data-id="4" data-nombre="ASY3D" data-precio="109973">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/ATDV-Y-.jpg" alt="ATDV-Y-">
-  <h4 class="precio">$120890</h4>
-  <button class="comprar" data-id="5" data-nombre="ATDV-Y-" data-precio="120890">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/DBF770.jpg" alt="DBF770">
-  <h4 class="precio">$87762</h4>
-  <button class="comprar" data-id="6" data-nombre="DBF770" data-precio="87762">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/DBF900.jpg" alt="DBF900">
-  <h4 class="precio">$153492</h4>
-  <button class="comprar" data-id="7" data-nombre="DBF900" data-precio="153492">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/DZ400.jpg" alt="DZ400">
-  <h4 class="precio">$19056</h4>
-  <button class="comprar" data-id="8" data-nombre="DZ400" data-precio="19056">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/DZQ-400-doble.jpg" alt="DZQ-400-doble">
-  <h4 class="precio">$197443</h4>
-  <button class="comprar" data-id="9" data-nombre="DZQ-400-doble" data-precio="197443">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/DZQ.jpg" alt="DZQ">
-  <h4 class="precio">$152093</h4>
-  <button class="comprar" data-id="10" data-nombre="DZQ" data-precio="152093">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/h3cr.jpg" alt="h3cr">
-  <h4 class="precio">$94337</h4>
-  <button class="comprar" data-id="11" data-nombre="h3cr" data-precio="94337">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/horno.jpeg" alt="horno">
-  <h4 class="precio">$37299</h4>
-  <button class="comprar" data-id="12" data-nombre="horno" data-precio="37299">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/jm168-mk6.png" alt="jm168-mk6">
-  <h4 class="precio">$65432</h4>
-  <button class="comprar" data-id="13" data-nombre="jm168-mk6" data-precio="65432">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/SM650-768x254.jpg" alt="SM650">
-  <h4 class="precio">$134812</h4>
-  <button class="comprar" data-id="14" data-nombre="SM650" data-precio="134812">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/ST3-700.jpg" alt="ST3-700">
-  <h4 class="precio">$38122</h4>
-  <button class="comprar" data-id="15" data-nombre="ST3-700" data-precio="38122">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/V100.png" alt="V100">
-  <h4 class="precio">$178200</h4>
-  <button class="comprar" data-id="16" data-nombre="V100" data-precio="178200">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/V200.png" alt="V200">
-  <h4 class="precio">$107812</h4>
-  <button class="comprar" data-id="17" data-nombre="V200" data-precio="107812">Comprar</button>
-</div>
-<div class="producto">
-  <img src="img/V400.png" alt="V400">
-  <h4 class="precio">$138782</h4>
-  <button class="comprar" data-id="18" data-nombre="V400" data-precio="138782">Comprar</button>
-</div>
+		<div class="productos">
+
+  <div class="producto">
+    <img src="img/A2DD.gif" alt="A2DD">
+    <p class="detalle">A2DD : $145323</p>
+    <button class="comprar" data-id="1" data-nombre="A2DD" data-precio="145323">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/A3DD.png" alt="A3DD">
+    <p class="detalle">A3DD : $17265</p>
+    <button class="comprar" data-id="2" data-nombre="A3DD" data-precio="17265">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/A4DD.png" alt="A4DD">
+    <p class="detalle">A4DD : $183455</p>
+    <button class="comprar" data-id="3" data-nombre="A4DD" data-precio="183455">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/ASY3D.jpg" alt="ASY3D">
+    <p class="detalle">ASY3D : $109973</p>
+    <button class="comprar" data-id="4" data-nombre="ASY3D" data-precio="109973">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/ATDV-Y-.jpg" alt="ATDV-Y-">
+    <p class="detalle">ATDV-Y- : $120890</p>
+    <button class="comprar" data-id="5" data-nombre="ATDV-Y-" data-precio="120890">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/DBF770.jpg" alt="DBF770">
+    <p class="detalle">DBF770 : $87762</p>
+    <button class="comprar" data-id="6" data-nombre="DBF770" data-precio="87762">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/DBF900.jpg" alt="DBF900">
+    <p class="detalle">DBF900 : $153492</p>
+    <button class="comprar" data-id="7" data-nombre="DBF900" data-precio="153492">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/DZ400.jpg" alt="DZ400">
+    <p class="detalle">DZ400 : $19056</p>
+    <button class="comprar" data-id="8" data-nombre="DZ400" data-precio="19056">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/DZQ-400-doble.jpg" alt="DZQ-400-doble">
+    <p class="detalle">DZQ-400-doble : $197443</p>
+    <button class="comprar" data-id="9" data-nombre="DZQ-400-doble" data-precio="197443">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/DZQ.jpg" alt="DZQ">
+    <p class="detalle">DZQ : $152093</p>
+    <button class="comprar" data-id="10" data-nombre="DZQ" data-precio="152093">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/h3cr.jpg" alt="h3cr">
+    <p class="detalle">h3cr : $94337</p>
+    <button class="comprar" data-id="11" data-nombre="h3cr" data-precio="94337">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/horno.jpeg" alt="horno">
+    <p class="detalle">horno : $37299</p>
+    <button class="comprar" data-id="12" data-nombre="horno" data-precio="37299">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/jm168-mk6.png" alt="jm168-mk6">
+    <p class="detalle">jm168-mk6 : $65432</p>
+    <button class="comprar" data-id="13" data-nombre="jm168-mk6" data-precio="65432">Comprar</button>
+  </div>
+
+  <div class="producto">
+    <img src="img/SM650-768x254.jpg" alt="SM650">
+    <p class="detalle">SM650 : $134812</p>
+    <button class="comprar" data-id="14" data-nombre="SM650" data-precio="134812">Comprar</button>
+  </div>
+
 
 		</main>
  
 <footer>
 	<hr>
-	<h4>Máquinas y accesorios para la industria del plástico</h4>
+	<h3>Máquinas y accesorios para la industria del plástico</h3>
 </footer>
 <script src="./js/tienda.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
