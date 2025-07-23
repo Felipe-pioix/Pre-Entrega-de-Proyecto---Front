@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <header>
 		<div class="prenav">
@@ -30,12 +29,20 @@
 	
   <main class="compra">
     <h1>Resumen de la compra</h1>
-    <section>
-      <div id="detalle"></div>
-    </section>
-  </main>
-
-  <form id="formulario" action="https://formspree.io/f/xrbleaoq" method="POST">
+    <table  class="compra" style="text-align: center">
+              <thead id="header-tabla-carrito">
+                  <tr>
+                      <th width="64%">Producto</th>
+                      <th width="12%">Cantidad</th>
+                      <th width="12%">$ un</th>
+                      <th width="12%">Subtotal</th>
+                  </tr>
+            </thead>
+    <tbody id="tabla-carrito">
+        <!-- Aquí se insertarán los productos dinámicamente con JavaScript -->
+    </tbody>
+  </table>
+    <form id="formulario" action="https://formspree.io/f/xrbleaoq" method="POST">
     <textarea id="carritoData" name="carrito" style="display:none;"></textarea>
     <textarea id="totalCarrito" name="total" style="display:none;"></textarea>
     <br>
@@ -47,9 +54,10 @@
     <label>Teléfono:</label>
     <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
     <br><br>
-    <button -type="submit" id="botonEnviar">Confirmar Compra</button>
-  </form>
-
+    </form>
+    <button onclick="enviarFormulario()">Confirmar Compra</button>
+  
+  </main>
   <footer>
 		<hr>
 		<h4>Máquinas y accesorios para la industria del plástico</h4>
@@ -57,5 +65,4 @@
   <script src="js/compra.js"></script>
 
 </body>
-
 </html>

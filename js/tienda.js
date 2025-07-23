@@ -85,8 +85,8 @@ cartel.style.display ="Block"
     }
 
    
-    // Mostrar el total redondeado a 0 decimales
     totalCarrito.textContent = 'Total: $'+ parseInt(total).toLocaleString("es-AR");
+    localStorage.setItem('total', total);
     modal.style.display = "block";
     
     
@@ -150,22 +150,16 @@ function actualizarContadorCarrito() {
 // carga la pagina de pagar con el carrito
 function pagar() {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
+    const total = localStorage.getItem('total') || 0;
+    
     if (carrito.length === 0) {
         alert("El carrito está vacío");
         return;
     }
 
-    let total = 0;
-    for (let i = 0; i < carrito.length; i++) {
-        total += parseFloat(carrito[i].precio) || 0;
-    }
-
-    // Guardar datos en localtorage
-    localStorage.setItem('productos', JSON.stringify(carrito));
-    localStorage.setItem('total', total.toFixed(3));
-
-    alert(`Total a pagar: $${total.toFixed(3)}`);
+    
+    
+    alert(`Total a pagar: $${parseInt(total).toLocaleString("es-AR")}`);
     window.location.href = "compra.html";
 }
 

@@ -273,8 +273,13 @@ button.comprar {
   margin: 15px;
 }
 
+table {
+  border: 1px solid black;
+}
 
-
+table.compra ,table.compra th, table.compra td {
+  border: 1px solid black;
+}
 /*rojo: #DA251C   */
 /* gris #666
 cambiar nav a desplegable con view port menor a 380
