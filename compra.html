@@ -27,7 +27,7 @@
 		</nav>
 	</header>
 	
-  <main class="compra">
+  <main class="compra" >
     <h1>Resumen de la compra</h1>
     <table  class="compra" style="text-align: center">
               <thead id="header-tabla-carrito">
@@ -41,7 +41,7 @@
     <tbody id="tabla-carrito">
         <!-- Aquí se insertarán los productos dinámicamente con JavaScript -->
     </tbody>
-  </table>
+   </table>
     <form id="formulario" action="https://formspree.io/f/xrbleaoq" method="POST">
     <textarea id="carritoData" name="carrito" style="display:none;"></textarea>
     <textarea id="totalCarrito" name="total" style="display:none;"></textarea>
@@ -53,10 +53,10 @@
     <input type="email" id="contactoEmail" name="email" placeholder="Correo electrónico" required>
     <label>Teléfono:</label>
     <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
-    <br><br>
     </form>
+    <div style="display: flex;justify-content: center;margin: 5px;">
     <button onclick="enviarFormulario()">Confirmar Compra</button>
-  
+    </div>
   </main>
   <footer>
 		<hr>

@@ -46,8 +46,8 @@ function enviarFormulario() {
 
     
     // Enviar el formulario
-/*    //document.getElementById('formulario').submit();
-    //        botonEnviar.addEventListener('click', enviarFormulario);
+    document.getElementById('formulario').submit();
+/*    //        botonEnviar.addEventListener('click', enviarFormulario);
         localStorage.removeItem("carrito");
         localStorage.clear()*/
 
