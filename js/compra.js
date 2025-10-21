@@ -19,7 +19,7 @@ carrito.forEach(producto => {
         
     `;
     tabla.appendChild(fila);
-    carritoData.innerHTML += `${producto.nombre} - ${producto.cantidad}</td> - $${parseInt(producto.precio).toLocaleString("es-AR")} - $${parseInt((parseFloat(producto.precio) * producto.cantidad)).toLocaleString("es-AR")}\n`;
+    carritoData.innerHTML += `${producto.nombre} - ${producto.cantidad} - $${parseInt(producto.precio).toLocaleString("es-AR")} - $${parseInt((parseFloat(producto.precio) * producto.cantidad)).toLocaleString("es-AR")}\n`;
 
 });
 
@@ -33,7 +33,7 @@ filaTotal.innerHTML = `
 tabla.appendChild(filaTotal);
 carritoData.innerHTML += `Total: $${parseFloat(total).toLocaleString("es-AR")}\n`;
 totalCarrito.innerHTML = total;
-
+console.log(carritoData.innerHTML)
 function enviarFormulario() {
     console.log("enviarForm")
 
